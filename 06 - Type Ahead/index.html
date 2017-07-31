@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="https://saliesbox.com/favicon.png"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <title>JS30 | 06 - Type Ahead</title>
+    <style>
+        body{
+            background:url(back.jpg);
+            font-family: 'Roboto', sans-serif;
+            background-size:cover;
+        }
+
+        .wrapper{
+            position:absolute;
+            left:50%;
+            transform:translate(-50%);
+            width:400px;
+            margin-top:25px;
+        }
+
+        .search{
+            padding:15px;
+            width:400px;
+        }
+
+        .results{
+            width:400px;
+            height:auto;
+            color:#fff;
+            display:none;
+            text-transform: capitalize;
+        }
+
+        .results li{
+            list-style:none;
+            background:#1a1a1a;
+            border-bottom:3px solid #b81616;
+            padding:10px;
+        }
+
+        .mainname{
+        font-size:1.25em;
+        }
+
+        .name{
+        font-size:0.8em;
+        color:#eee;
+        margin-left:3px;
+        }
+
+        .band{
+        color:#ccc;
+        font-size:0.75em;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <input class="search">
+        <div class="results"></div>
+    </div>
+    
+    <script>
+        const data = "https://gist.githubusercontent.com/Salies/aacc6247deb22191295369523d5ff76e/raw/bc453dbb633258a9c32c769f5e1a33f57fee30e5/drummers.json";
+        const list = [];
+
+        //get db - filter it - get it into an array
+        fetch(data)
+            .then(blob => blob.json())
+            .then(data => list.push(...data));
+
+        //match words (input->array)
+        function match(inputWord, list) {
+            return list.filter(input => {
+                var regex = new RegExp(inputWord, 'gi');
+                return input.name.match(regex) || input.nick.match(regex)
+            });
+        }
+
+        //gi = global (g) and not canse-sensitive (i)
+        function display() {
+            var matchArray = match(this.value, list);
+            var html = matchArray.map(input => {
+                var regex = new RegExp(this.value, 'gi');
+                var name = input.name.replace(regex, `<span>${this.value}</span>`);
+                var nick = input.nick.replace(regex, `<span>${this.value}</span>`);
+                return `
+                <li>
+                    <span class="mainname">${nick}</span> <span class="name">${name}</span><br>
+                    <div class="band">${input.bands}</div>
+                </li>
+            `
+            }).join('');
+
+            results.innerHTML = html;
+        }
+
+        //get the html things
+        const searchInput = document.querySelector('.search');
+        const results = document.querySelector('.results');
+        //checking and making things fancy
+        searchInput.addEventListener('change', display);
+        searchInput.addEventListener('keyup', display);
+        //checking if there's nothing to search for
+        searchInput.addEventListener('keyup', function() {
+            if (searchInput.value.length === 0) {
+                results.style.display = 'none';
+            } else {
+                results.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

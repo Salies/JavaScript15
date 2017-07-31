@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="https://saliesbox.com/favicon.png"/>
+    <title>JS30 | 12 - Key Sequence Detection</title>
+</head>
+<body>
+    <img src="https://pbs.twimg.com/media/C5jCKfyWYAAfIHq.jpg:large" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);">
+    <script>
+        var sequence = [];
+
+        const codes = 
+        [
+            {
+                code: "faustop",
+                msg: "Faustop, bicho!",
+                audio: function(){
+                    new Audio('ppp.mp3').play();
+                }
+            },
+            {
+                code: "vamozua",
+                msg: "VAMO ZUÁ!!!",
+                audio: function(){
+                    new Audio('vamozuar.mp3').play();
+                }
+            },
+            {
+                code: "pinto",
+                msg: "FALA MEU POOOOOVO!!!",
+                audio: function(){
+                    new Audio('fala-meu-povo.mp3').play();
+                }
+            },
+            {
+                code: "ancap",
+                msg: "IMPOSTO É ROUBO!",
+                audio: function(){
+                    window.open('https://www.youtube.com/watch?v=pvkYwOJZONU_blank').focus();
+                }
+            },
+        ]
+
+        window.addEventListener("keyup", (e) =>{
+            sequence.push(e.key);
+            for(i=0;i<4;i++){
+                let c = codes[i];
+                if(sequence.join("").includes(c.code)){
+                    console.clear();
+                    console.log(c.msg);
+                    c.audio();
+                    sequence = [];
+                }
+            }
+            console.log(sequence);
+        });        
+    </script>
+</body>
+</html>

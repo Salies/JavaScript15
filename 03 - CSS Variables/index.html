@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="https://saliesbox.com/favicon.png"/>
+    <title>JS30 | 03 - CSS Variables</title>
+    <style>
+        .author::after,
+        .title::after,
+        h2 {
+            font-weight: 700
+        }
+        :root {
+            --picture: #fff;
+            --album: "";
+            --author: ""
+        }
+        body {
+            background: #1a1a1a
+        }
+        h2 {
+            text-align: center;
+            color: #fff;
+            font-family: 'helvetica neue', sans-serif;
+            font-size: 50px;
+            margin-top: 35px
+        }
+        .wrapper {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            color: #fff;
+            font-family: Arial, sans-serif
+        }
+        .panel {
+            position: relative;
+            background: var(--picture);
+            background-size: cover;
+            width: 650px;
+            height: 650px
+        }
+        .title::after {
+            content: var(--album)
+        }
+        .author::after {
+            content: var(--author)
+        }
+        .button {
+            width: 25px;
+            height: 25px;
+            cursor: pointer
+        }
+        .back {
+            background: url(back.png);
+            float: right;
+            margin-right: 15px
+        }
+        .foward {
+            background: url(foward.png);
+            float: right
+        }
+    </style>
+</head>
+<body>
+    <h2>Update CSS Variables with <span style="color:#ffce00;">JS</span></h2>
+    <script>
+        function background() {
+        var e = "url(images/" + number + ".jpg)";
+        document.querySelector("html").style.setProperty("--picture", e)
+        }
+
+        function albumname() {
+        var e = "'" + albums[number].name + "'",
+        a = "'" + albums[number].author + "'";
+        document.querySelector("html").style.setProperty("--album", e), document.querySelector("html").style.setProperty("--author", a)
+        }
+
+        function more() {
+        number++, number >= 9 && (number = 9), background(), albumname()
+        }
+
+        function less() {
+        number--, -1 >= number && (number = 0), background(), albumname()
+        }
+        var number = 0;
+        const albums = [{
+        name: "10. Master of Puppets",
+        author: "Metallica"
+        }, {
+        name: "9. The Whirlwind",
+        author: "Transatlantic"
+        }, {
+        name: "8. Rust In Peace",
+        author: "Megadeth"
+        }, {
+        name: "7. 2112",
+        author: "Rush"
+        }, {
+        name: "6. The Human Equation",
+        author: "Ayreon"
+        }, {
+        name: "5. Nightfall In Middle-Earth",
+        author: "Blind Guardian"
+        }, {
+        name: "4. Nightmare",
+        author: "Avenged Sevenfold"
+        }, {
+        name: "3. Black Holes and Revelations",
+        author: "Muse"
+        }, {
+        name: "2. Metropolis Pt. 2",
+        author: "Dream Theater"
+        }, {
+        name: "1. Operation: Mindcrime",
+        author: "Queensrÿche"
+        }];
+        var html = window.getComputedStyle(document.querySelector("html"));
+        html.getPropertyValue("--picture"), background(), albumname();        
+    </script>
+    <div class="wrapper">
+        <div class="panel"></div>
+        <br>
+        <span class="title"></span> by <span class="author"></span>
+        <div class="button foward" onclick="more()"></div>
+        <div class="button back" onclick="less()"></div>
+    </div>
+</body>
+</html>

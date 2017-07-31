@@ -1,0 +1,78 @@
+<html>
+<head>
+    <title>JS30 | 05 - Flex Panel Gallery</title>
+    <meta charset='utf-8'>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:700|Covered+By+Your+Grace" rel="stylesheet">
+</head>
+<body>
+<!--before you ask, these are the members of The Neal Morse Band =D-->
+<section class="wrapper">
+    <div class="block neal" id="0" onclick="size(this)">
+        <aside class="name">
+            <section>
+                <div>Neal Morse</div>
+                <br>
+                <div>lead vocals, keyboards, guitar</div>
+            </section>
+        </aside>
+    </div>
+    <div class="block randy" id="1" onclick="size(this)">
+        <aside class="name">
+            <section>
+                <div>Randy George</div>
+                <br>
+                <div>bass</div>
+            </section>
+        </aside>
+    </div>
+    <div class="block portnoy" id="2" onclick="size(this)">
+        <aside class="name">
+            <section>
+                <div>Mike Portnoy</div>
+                <br>
+                <div>drums, vocals</div>
+            </section>
+        </aside>
+    </div>
+    <div class="block eric" id="3" onclick="size(this)">
+        <aside class="name">
+            <section>
+                <div>Eric Gillette</div>
+                <br>
+                <div>vocals, guitar</div>
+            </section>
+        </aside>
+    </div>
+    <div class="block bill" id="4" onclick="size(this)">
+        <aside class="name">
+            <section>
+                <div>Bill Hubauer</div>
+                <br>
+                <div>vocals, keyboards</div>
+            </section>
+        </aside>
+    </div>
+</section>
+
+<script>
+function size(block){
+    var b = block.style;
+    var c = block.id;
+    var n = document.getElementsByClassName('name')[c].style;
+
+    if(b.width!='300px' && n.opacity!='100'){
+        b.width="300px";
+        b.height='300px';
+        n.opacity="100";
+    }
+    else{
+        b.width="250px";
+        b.height='250px';
+        n.opacity="0";
+    }
+}
+</script>
+
+</body>
+</html>

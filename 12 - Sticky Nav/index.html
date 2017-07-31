@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="https://saliesbox.com/favicon.png"/>
+    <title>JS30 - 24 / Sticky Nav</title>
+    <style>
+        *{
+            margin:0;
+        }
+
+        ul{
+            margin:0;
+            -webkit-padding-start: 0;
+            -webkit-margin-before: 0;
+            -webkit-margin-after: 0;
+        }
+
+        body{
+            background:#2b2926;
+            font-family:Arial, Helvetica, sans-serif;
+            color:white;
+        }
+
+        section, ul{
+            width:100%;
+            max-width:900px;
+        }
+
+        img{
+            max-width:100%;
+            margin-top:15px;
+            margin-bottom:15px;
+        }
+
+        .wrapper{
+            width:900px;
+            margin:0 auto;
+        }
+
+        .header{
+            height:200px;
+            background:url(http://imgur.com/6t5J18P.jpg);
+        }
+
+        .header img{display: block;width: 620px;margin: 0 auto;padding: 10px;filter: drop-shadow(0 0 2px rgba(0, 0, 0, .75));}
+
+        .navbar{
+            height:60px;
+            background:gold;
+
+        }
+
+        .navbar li{
+            margin:0;
+            list-style: none;
+            display:inline-flex;
+            height:100%;
+            width:calc(100% / 5);
+            background:#745f2d;
+            transition:.3s;
+            align-items: center;
+            justify-content: center;
+            cursor:pointer;
+            font-weight:bold;
+            text-transform:uppercase;
+        }
+
+        .navbar li:hover{
+            background:#403210;
+        }
+
+        .post{
+            background:#1a1a1a;
+            height:auto;
+            padding:20px;
+            width:calc(100% - 40px);
+        }
+
+        .footer{
+            width:calc(100% - 10px);
+            font-size:10px;
+            background:#111;
+            padding-bottom:10px;
+            padding-left:10px;
+        }
+        
+        .footer img{
+            margin:0;
+            margin-bottom:10px;
+            max-width:calc(100% + 10px)!important;
+            margin-left:-10px;
+        }
+
+        .top{
+            position:fixed;
+            top:0;
+        }
+
+        /*this prevents the elements from repositioning when the nav changes place*/
+        .ghostnav{
+            margin-bottom:60px; /*this margin is equivalent to the nav's height*/
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <section class="header">
+            <img src="http://b.thumbs.redditmedia.com/LrDK9GgVXKnYTLqtk2m_pG59g7njJ43hsqO7ngFN2xA.png"/>
+        </section>
+        <ul class="navbar">
+            <li>Home</li><li>Filler</li><li>Filler</li><li>Filler</li><li>Filler</li>
+        </ul>
+        <section class="post">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vehicula congue est at finibus. Maecenas id enim augue. Vivamus aliquet enim nec tortor eleifend ultrices. Praesent tortor nisi, luctus finibus posuere nec, posuere ac justo. Fusce enim nulla, ornare in fringilla non, pellentesque in magna. Nam sit amet sapien nisl. Vestibulum convallis, ex id euismod tristique, urna enim vulputate eros, ut finibus libero enim in ipsum. Vestibulum ultricies tincidunt est, id tincidunt erat tristique sed.
+            <img src="http://i.imgur.com/9lKnMfF.jpg"/>
+            Vestibulum pulvinar, nulla at rhoncus blandit, neque mauris porta lacus, sit amet pulvinar lectus enim ut nibh. Duis a libero nisl. Quisque faucibus laoreet nibh quis ultricies. Nulla blandit convallis velit, eu placerat odio consequat mollis. Aenean laoreet tortor in nisi pulvinar, eu pulvinar mauris lacinia. Nam eget maximus neque. Ut commodo odio nulla, vel porttitor ipsum cursus sit amet. Cras tempor fringilla mauris, a molestie tellus finibus non. Nunc convallis sagittis arcu, id ullamcorper augue. Donec id viverra velit. Fusce turpis ex, sodales in lacinia nec, dapibus rhoncus augue. Vestibulum auctor, lectus in dignissim ultricies, nunc augue eleifend ex, vel cursus enim nunc sit amet metus. In porta turpis in augue ullamcorper venenatis. Vestibulum felis orci, maximus in purus quis, imperdiet ullamcorper ipsum. Maecenas leo nisl, tristique non pellentesque ac, tempor ut diam. In neque ipsum, congue vel lacus id, consequat pulvinar massa.
+            <img src="https://d2q9lgeqx691v0.cloudfront.net/content/2016/01/nightwish-atual.jpg"/>
+            Sed feugiat nisl ex, vel porttitor justo viverra sed. Maecenas mattis dapibus lorem, ut semper sapien eleifend at. Mauris dui quam, lobortis eget blandit et, laoreet at nulla. Praesent ut fermentum quam. Donec vestibulum mauris eget ipsum ullamcorper viverra. Aenean porta lorem nulla, a finibus odio volutpat ac. Nulla tincidunt massa libero, ut tincidunt ex facilisis non. Aenean condimentum erat ac massa ultricies dictum. Nunc fermentum non sapien vitae condimentum. Suspendisse non nunc pellentesque, efficitur sapien et, tincidunt justo. Sed massa arcu, dictum eget sollicitudin ac, tempor eget quam.
+            <img src="https://i.ytimg.com/vi/h6CEzZDSDZU/maxresdefault.jpg">
+            Nulla nec risus nulla. Sed eu imperdiet tortor, ut rutrum ligula. Curabitur pharetra justo eu ex fringilla, eu auctor mi lacinia. Phasellus nibh mauris, finibus vitae volutpat ac, congue ac nibh. Nulla metus lorem, vehicula a odio eu, facilisis lobortis augue. Nullam placerat est suscipit, consequat diam non, lobortis mauris. Vivamus consectetur ultrices sem, sed rutrum lacus cursus vitae. Ut sagittis erat sit amet odio feugiat, nec maximus diam feugiat. Praesent neque mauris, varius et sapien vel, vestibulum tristique elit. Sed efficitur quam vitae arcu sodales, quis dictum lacus rhoncus.
+            <img src="https://www.blahcultural.com/wp-content/uploads/2014/08/Nightwish.jpg"/>
+            Proin eu posuere odio. Aliquam quis turpis eu quam mollis maximus. Duis ut massa et lorem rutrum sodales eu sit amet felis. Phasellus luctus enim massa, id suscipit tortor pretium non. Etiam vitae bibendum nunc, eu vehicula nulla. Vivamus suscipit luctus dolor, a mattis dui efficitur varius. Interdum et malesuada fames ac ante ipsum primis in faucibus. In fermentum lectus urna, ac vulputate ipsum interdum ut. Vivamus consectetur ultrices sem, sed rutrum lacus cursus vitae. Ut sagittis erat sit amet odio feugiat, nec maximus diam feugiat. Praesent neque mauris, varius et sapien vel, vestibulum tristique elit. Sed efficitur quam vitae arcu sodales, quis dictum lacus rhoncus.
+        </section>
+        <section class="footer">
+            <img src="http://hyppers.com/wp-content/uploads/2016/11/NW.jpg"/><br>
+            This page was created by <a href="https://github.com/Salies">Salies</a> for studying purposes. All rights reserved to Nightwish.
+        </section>
+    </div>
+
+    <script>
+        const nav = document.querySelector(".navbar"), header = document.querySelector(".header");
+        let w = 0, n = nav.offsetTop;
+        window.addEventListener("scroll", function(){
+            //update previously declared global var
+            w = window.scrollY;
+            //check (constantly because of the listener) the window position, and compare it to the nav position (which is constant, therefore it was declared outside of the listener)
+            if(w>=n){
+                nav.classList.add("top");
+                //prevent elements from repositioning
+                header.classList.add("ghostnav");
+            }
+            else{
+                nav.classList.remove("top");
+                header.classList.remove("ghostnav");
+            }
+        });
+    </script>
+</body>
+</html>

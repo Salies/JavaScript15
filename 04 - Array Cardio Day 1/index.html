@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="https://saliesbox.com/favicon.png"/>
+    <title>JS30 | 04 - Array Cardio</title>
+</head>
+<body>
+    <script>
+        const musicians = [
+            {name: 'Jordan Rudess', band: 'Dream Theater', alive: true, role: 'keyboradist', left: null},
+            {name: 'Mike Portnoy', band:'Dream Theater', alive: true, role: 'drummer', left: '2010', god: true},
+            {name: 'Matthew Bellamy', band: 'Muse', alive: true, role: 'guitarist', left: null},
+            {name: 'Chris Wolstenholme', band: 'Muse', alive: true, role: 'bassist', left: null},
+            {name: 'Cliff Burton', band: 'Metallica', alive: "1986", role:'bassist', left: null},
+            {name: 'André Olbrich', band: 'Blind Guardian', alive: true, role: 'guitarist', left: null},
+            {name: 'James Sullivan', band: 'Avenged Sevenfold', alive: '2009', role: 'drummer', left: null},
+            {name: 'Hansi Kürsch', band: 'Blind Guardian', alive: true, role: 'vocalist', left: null, god: true},
+        ]
+
+        for (i = 0; i < musicians.length; i++) { 
+
+            var musician = musicians[i];
+
+        //verifying if musicians is still in the band
+        if(musician.left!=null){
+            var is = " was ";
+            var left = " He left the band in " + musician.left + ".";
+        }
+        else{
+            var is = " is a ";
+            var left = "";
+        }
+
+        if(musician.alive!=true){
+            var life = " Unfortunately, he died in " + musician.alive + ". Rest In Peace, " + musician.name + ".";
+        }
+        else{
+            var life = "";
+        }
+
+        //printing info
+        var namerole = musician.name + is + musician.role + " in " + musician.band + "." + left + life;
+        console.log(namerole);
+
+        //checking if the musician is a god
+        if(musician.god===true){
+            console.log("In fact, " + musician.name + " is a god! Being a musician is just a hobby for him.")
+        }
+
+        //remember: Hansi Kürsch is better than you
+        if(musician.name=='Hansi Kürsch'){
+            console.log("Remember, Hansi Kürsch is better than you.");
+        }
+        }
+    </script>
+    Take a look at the console, mate ;)
+</body>
+</html>

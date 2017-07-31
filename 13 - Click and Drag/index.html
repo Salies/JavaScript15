@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="https://saliesbox.com/favicon.png"/>
+    <title>JS30 | 13 - Click and Drag</title>
+    <style>
+        *{
+            margin:0;
+        }
+
+        body{
+            background:url(http://wallpapercave.com/wp/hpehPUv.jpg);
+            align-items:center;
+        }
+
+        .slider{
+            height:900px;
+            overflow:hidden;
+            user-select:none;
+            cursor: pointer;
+            align-self:center;
+        }
+
+        .slider img{
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <img src="https://img08.deviantart.net/9f77/i/2006/062/0/a/dream_theater_panoramic_by_adriaxen.jpg">
+    </div>
+
+<script>
+    const slider = document.querySelector(".slider");
+    var active = false, initialX, scrollLeft;
+
+    slider.addEventListener("mousedown", function(e){
+        active = true;
+        initialX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener("mouseup", function(){
+        active = false;
+    });
+
+    slider.addEventListener("mouseleave", function(){
+        active = false;
+    });
+
+    slider.addEventListener("mousemove", function(e){
+        if(!active) return;
+        e.preventDefault();
+        var x = e.pageX - slider.offsetLeft, scroll = (x - initialX);
+        slider.scrollLeft = scrollLeft - scroll;
+    });
+</script>
+</body>
+</html>

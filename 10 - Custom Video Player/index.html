@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="https://saliesbox.com/favicon.png"/>
+    <title>JS30 | 11 - Custom Video Player</title>
+    <style>
+        body{
+        background: url(bg.jpg) no-repeat center center fixed; 
+        background-size: cover;
+        color:#fff;
+        font-family:Arial;
+        }
+
+        input{
+        cursor:pointer;
+        }
+
+        .wrapper{
+        position:absolute;
+        left:50%;
+        top:50%;
+        transform:translate(-50%, -50%);
+        transition:.3s;
+        }
+
+        .wrapper:hover{
+        box-shadow: 0 0 12px rgba(0,0,0,0.35);
+        }
+
+        .button{
+        cursor:pointer;
+        position:absolute;
+        margin-top:0px;
+        }
+
+        span{
+        cursor:pointer;
+        }
+
+        .bar_num{
+        display:none;
+        }
+
+        .time{
+        position:absolute;
+        bottom:39px;
+        left:5px;
+        font-size:11px;
+        opacity:0.25;
+        transition:.3s;
+        }
+
+        .controls{
+        width:880px;
+        height:34px;
+        background:#7c3aa8;
+        margin-top:-5px;
+        font-size:20px;
+        display:flex;
+        padding-left:10px;
+        padding-right:10px;
+        text-shadow:0 0 5px rgba(0,0,0,0.75);
+        align-items:center;
+        justify-content: space-between;
+        }
+
+        .bar{
+        width:690px;
+        margin-left:29.5px;
+        }
+
+        .volume{
+        display:flex; 
+        width:90px;
+        }
+
+        .v{
+        transform: scale(-1, 1);
+        margin-bottom: 3px;
+        margin-right: -10px;
+        }
+
+        .res_ct{
+        margin-top: -2px;
+        margin-left: -5px;
+        user-select: none;
+        }
+
+        .res{
+        width:100px;
+        background:#472160;
+        font-size:14px;
+        position:absolute;
+        bottom: 33px;
+        right:0;
+        display:none;
+        }
+
+        .res aside{
+        width:88.5px;
+        height:24px;
+        cursor:pointer;
+        padding-left:12.5px;
+        padding-top:8px;
+        }
+
+        .res aside:hover{
+        background:#e1c451;
+        color:#000;
+        }
+
+        input[type=range]{
+            -webkit-appearance: none;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 300px;
+            height: 5px;
+            background: #ddd;
+            border: none;
+            border-radius: 3px;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: none;
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            background: goldenrod;
+            margin-top: -4px;
+        }
+
+        input[type=range]:focus {
+            outline: none;
+        }
+
+        input[type=range]:focus::-webkit-slider-runnable-track {
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="time"><span class="bar_num"></span><span class="timer">-</span> / <span class="duration">-</span></div>
+        <div class="res">
+            <aside class="hd1080" onclick="res(this)">1080p</aside>
+            <aside class="hd720" onclick="res(this)">720p</aside>
+            <aside class="large" onclick="res(this)">480p</aside>
+            <aside class="medium" onclick="res(this)">360p</aside>
+            <aside class="small" onclick="res(this)">240p</aside>
+        </div>        
+        
+        <div id="player"></div>
+        
+        <div class="controls">
+            <div class="button" onclick="control()">►</div>
+            <input class="bar" type="range" min="0" max="100" value="0">
+            <span class="v">🕪</span> <input class="volume" type="range" min="0" />
+            <span class="res_ct">&#9881;</span>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="https://saliesbox.com/favicon.png"/>
+    <title>JS30 | 09 - Dev Tools Domination</title>
+</head>
+<body>
+    <p onClick="change()" style="transition:.5s;font-family:sans-serif;cursor:pointer;font-size:18px;color:black;">Transfoooorm!</p>
+    <script>
+        const p = document.querySelector('p');
+
+        function change() {
+            if(p.style.color!='black'){
+                p.style.color = 'black';
+                p.style.fontWeight = '700';
+                p.style.fontSize = '18px';
+            }
+            else{
+                p.style.color = 'gold';
+                p.style.fontWeight = '700';
+                p.style.fontSize = '50px';
+            }
+        }
+
+        console.log("Although I've only used this kind of reference with C/C++ it's pretty useful anyway. Oh, %s is love!", "🍕");
+
+        console.log('%c Howdy, pal!', 'font-size:30px; font-weight:700; color: darkred; text-shadow: 1px 1px 1px rgba(255,255,255,0.5);');
+
+        console.warn("My cock can walk right through the door");
+
+        console.error("Err... err... error!");
+
+        console.info("Heya!");
+
+        console.log(p);
+
+        console.count("Banana");
+        console.count("Banana");
+        console.count("Banana");
+        console.count("Banana");
+        console.count("Terracotta");
+        console.count("Banana");
+        console.count("Terracotta");
+        console.count("Terracotta");
+        console.count("Pie");
+
+        const players = [
+            {name: 'Salies', kills: '16', deaths: '2'},
+            {name: 'Dayge', kills: '4', deaths: '5'}
+        ];
+
+        players.forEach(player =>{
+            console.groupCollapsed(`${player.name}`);
+            console.log(`${player.name} is a FPS player`);
+            console.log(`${player.name} killed ${player.kills} enemies`);
+            console.log(`His K.D. is ` + `${player.kills}` / `${player.deaths}`);
+            if(`${player.name}` == 'Dayge'){
+                console.log('His quickscope is 💩.')
+            }
+            else{
+                console.log('His quickscope is 👌');
+            }
+            console.groupEnd(`${player.name}`);
+        });
+
+        //btw, before saying that I'm childish or something, you may want to know System of A Down First ;)
+    </script>
+</body>
+</html>

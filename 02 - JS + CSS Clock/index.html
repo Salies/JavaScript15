@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="https://saliesbox.com/favicon.png"/>
+<style>
+  html{
+    background: url(http://unsplash.it/1500/1000?image=537&blur=50);
+    background-size:cover;
+  }
+
+  /*musica*/
+  .container-pra-nao-dar-merda{position:absolute; top: 50%; left: 50%; transform:translate(-50%, -50%);}
+
+  .six {
+    position: relative;
+    border-radius: 50%;
+    background: white url(ios_clock.svg) no-repeat center;
+    background-size: 82.5%;
+    height: 30em;
+    width: 30em;
+    border:10px solid black;
+  }
+
+  .six.ponto:after {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 5%;
+    height: 5%;
+    z-index: 10;
+    background: black;
+    border-radius: 50%;
+    content: "";
+  }
+
+  .c-horas, .c-minutos, .c-segundos{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .horas, .minutos, .segundos{
+    height:6px;
+    background:black;
+    position: absolute;
+    top:50%;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    transition: all 0.05s;
+    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+  }
+
+  .horas{height:10px; width: 30%; left: 20%;}
+
+  .minutos{ width: 34%; left: 16%;}
+
+  .segundos{height: 0.5%; width: 40%; left: 10%;}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+</head>
+<body>
+<div class="container-pra-nao-dar-merda">
+<img src="dummy.png" style="z-index:1;position:absolute;width: 82.5%;top:50%;left:50%;transform: translate(-50%, -50%);" alt="" usemap="#Map"/>
+<!--easter eggs-->
+<map name="Map" id="Map">
+    <area alt="" title="" href="https://www.youtube.com/watch?v=jnaTMcn9Hnc" target="_blank" shape="rect" coords="190,379,226,424" />
+</map>
+<article class="six ponto">
+
+<div class="c-horas">
+  <div class="horas"></div>
+</div>
+
+<div class="c-minutos">
+  <div class="minutos"></div>
+</div>
+
+<div class="c-segundos">
+  <div class="segundos"></div>
+</div>
+
+</article>
+
+</div>
+
+<!--the clock itself-->
+<script>
+//get html divs
+const ponteiroHoras = document.querySelector('.horas');
+const ponteiroMinutos = document.querySelector('.minutos');
+const ponteiroSegundos = document.querySelector('.segundos');
+function setDate() {
+  const tempo = new Date();
+  //get your pc's date
+  const segundos = tempo.getSeconds();
+  //get seconds
+  const rotSegundos = ((segundos / 60) * 360) + 90;
+  ponteiroSegundos.style.transform = `rotate(${rotSegundos}deg)`;
+  //rotates seconds' div
+  const mins = tempo.getMinutes();
+  //get minutes
+  const minsDegrees = ((mins / 60) * 360) + 90;
+  ponteiroMinutos.style.transform = `rotate(${minsDegrees}deg)`;
+  //rotate minutes' div
+  const hour = tempo.getHours();
+  //get hours
+  const hourDegrees = ((hour / 12) * 360) + 90;
+  ponteiroHoras.style.transform = `rotate(${hourDegrees}deg)`;
+  //rotate hours div
+}
+//pointers movement according to seconds
+setInterval(setDate, 1000);
+//executing function
+setDate();
+</script>
+
+</body>
+</html>

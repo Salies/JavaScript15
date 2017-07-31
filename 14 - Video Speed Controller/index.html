@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="https://saliesbox.com/favicon.png"/>
+    <title>JS30 | 14 - Video Speed Controller</title>
+    <style>
+        *{
+            margin:0;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:DarkSlateBlue ;
+        }
+
+        .wrapper{
+            position:absolute;
+            top:50%;left:50%;
+            transform:translate(-50%, -50%);
+            width: 946px;
+            background:DodgerBlue;
+            padding:30px;
+        }
+
+        .options{
+            float:right;
+            position:relative;
+        }
+
+        li{
+            list-style: none;
+            display:block;
+            padding:10px;
+            background:RebeccaPurple;
+            color:white;
+            font-weight:bold;
+            transition:.25s;
+            cursor:pointer;
+        }
+
+        li:hover{
+            background:MediumPurple;
+        }
+    </style>
+</head>
+<body>    
+    
+<div class="wrapper">
+    <div id="player"></div>
+
+    <ul class="options">
+        <li onclick="speed(this)">0.25</li>
+        <li onclick="speed(this)">0.50</li>
+        <li onclick="speed(this)">0.75</li>
+        <li onclick="speed(this)">1.00</li>
+        <li onclick="speed(this)">1.25</li>
+        <li onclick="speed(this)">1.50</li>
+        <li onclick="speed(this)">1.75</li>
+        <li onclick="speed(this)">2.00</li>
+    </ul>
+</div>
+
+<script>
+    var tag = document.createElement('script');
+    const inp = document.querySelector(".speed");
+    const opt = document.querySelector(".options");
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        height: '480',
+        width: '854',
+        videoId: 'mWBQo3r050g',
+        events: {
+        'onReady': onPlayerReady,
+        }
+    });
+    }
+
+    function onPlayerReady(event) {
+    event.target.pauseVideo();
+    }
+
+    var done = false;
+
+    function speed(e){
+        player.setPlaybackRate(e.innerHTML);
+    }
+</script>
+</body>
+</html>

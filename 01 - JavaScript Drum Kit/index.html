@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="https://saliesbox.com/favicon.png"/>
+    <title>JS30 | 01 - JavaScript Drum Kit</title>
+    <style>
+    body{
+        background:url(bg.jpg);
+        background-size:cover;
+        font-family:Arial, sans-serif;
+        font-size:16px;
+    }
+
+    .kit{
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        padding:15px;
+        background:#fff;
+        border-radius:10px;
+    }
+    
+    .kit img{
+        margin-bottom:10px;
+    }
+
+    .demo a{color:#000;}
+    </style>
+</head>
+<body>
+    <div class="kit">
+    <img src="kit.jpg" alt="" usemap="#kit" class="kit2"><br>
+    <span class="demo"><a href="https://www.youtube.com/watch?v=0wG3EcFx6n8" target="_blank">Demo</a> </span>
+    </div>
+
+    <!--maping...-->
+    <map name="kit" id="kit">
+        <!--snare--><area alt="" title="" href="#" shape="rect" coords="206,228,339,355" class="sounds/snare.mp3" onclick="play(this)" onclick="play(this)" />
+        <!--mini-snare--><area alt="" title="" href="#" shape="poly" coords="49,301,26,335,11,340,5,348,15,400,45,421,74,423,108,415,126,385,123,315,109,301,50,295" class="sounds/snare2.mp3" onclick="play(this)" />
+        <!--8" tom--><area alt="" title="" href="#" shape="rect" coords="185,149,267,222" class="sounds/tom8'.mp3" onclick="play(this)" />
+        <!--10" tom--><area alt="" title="" href="#" shape="rect" coords="277,133,374,233" class="sounds/tom10'.mp3" onclick="play(this)" />
+        <!--12" tom--><area alt="" title="" href="#" shape="poly" coords="477,222,469,189,480,157,470,143,432,137,399,148,381,177,378,207,401,234,419,255,475,254,483,246" class="sounds/tom12'.mp3" onclick="play(this)" />
+        <!--14" tom--><area alt="" title="" href="#" shape="poly" coords="521,278,520,297,523,318,533,334,544,341,482,386,443,387,417,371,409,348,401,318,417,289,441,271,496,264" class="sounds/tom14'.mp3" onclick="play(this)" />
+        <!--16" tom--><area alt="" title="" href="#" shape="rect" coords="461,381,640,479" class="sounds/tom16'.mp3" onclick="play(this)" />
+        <!--hihat--><area alt="" title="" href="#" shape="poly" coords="64,216,88,212,101,202,107,191,108,179,171,182,185,195,198,212,196,230,188,253,147,277,82,283,65,278,48,259,48,232,51,219" class="sounds/hihat.mp3" onclick="play(this)" />
+        <!--16" crash--><area alt="" title="" href="#" shape="poly" coords="4,126,45,141,78,137,105,117,117,105,134,90,147,37,85,15,38,12,7,18,0,18" class="sounds/16aacrash.mp3" onclick="play(this)" />
+        <!--17" crash--><area alt="" title="" href="#" shape="rect" coords="154,0,324,68" class="sounds/17crash.mp3" onclick="play(this)" />
+        <!--19" crash--><area alt="" title="" href="#" shape="poly" coords="402,2,397,27,409,46,419,61,443,68,453,78,468,86,495,98,546,92,590,71,600,29,600,0" class="sounds/19crash.mp3" onclick="play(this)" />
+        <!--7" splash--><area alt="" title="" href="#" shape="poly" coords="61,217,84,214,94,206,104,197,104,183,92,163,66,162,44,167,31,180,27,203,48,223" class="sounds/splash7'.mp3" onclick="play(this)" />
+        <!--9" splash--><area alt="" title="" href="#" shape="poly" coords="87,134,98,121,114,111,132,109,153,113,170,128,167,148,162,161,135,168,89,161,82,149" class="sounds/splash9'.mp3" onclick="play(this)" />
+        <!--11" splash--><area alt="" title="" href="#" shape="poly" coords="402,59,433,65,448,77,460,93,456,117,408,135,354,110,347,84,361,62" class="sounds/splash11'.mp3" onclick="play(this)" />
+        <!--mid stax--><area alt="" title="" href="#" shape="rect" coords="163,80,253,143" class="sounds/stax10'.mp3" onclick="play(this)" />
+        <!--low stax--><area alt="" title="" href="#" shape="poly" coords="528,267,561,274,585,275,606,274,618,269,624,281,632,291,640,297,635,354,549,351,531,331,521,314,519,289,521,275" class="sounds/stax1214'.mp3" onclick="play(this)" />
+        <!--radia bell--><area alt="" title="" href="#" shape="rect" coords="261,78,328,131" class="sounds/radiabell.mp3" onclick="play(this)" />
+        <!--ride--><area alt="" title="" href="#" shape="poly" coords="482,149,469,184,474,208,479,228,493,247,510,261,529,266,541,272,564,275,586,277,604,275,618,271,607,245,607,225,610,209,617,187,623,177,631,166,640,158,636,108,584,102,545,102,502,115" class="sounds/HHrockride.mp3" onclick="play(this)" />
+        <!--china--><area alt="" title="" href="#" shape="poly" coords="637,159,610,207,609,240,618,274,640,298" class="sounds/chinese.mp3" onclick="play(this)" />
+        <!--tambourine--><area alt="" title="" href="#" shape="poly" coords="2,245,30,255,50,268,51,288,46,310,36,313,25,330,16,334,4,337,0,337" class="sounds/tamborine.mp3" onclick="play(this)" />
+        <!--kick--><area alt="" title="" href="#" shape="rect" coords="334,366,378,454" class="sounds/kick.mp3" onclick="play(this)" />
+        <!--kick left--><area alt="" title="" href="#" shape="poly" coords="201,394,197,414,204,433,214,459,221,470,236,460,226,398,214,392" class="sounds/kick.mp3" onclick="play(this)" />
+        <!--hihat open--><area alt="" title="" href="#" shape="poly" coords="170,402,192,415,206,448,214,474,199,477,181,477,164,414" class="sounds/hiopen.mp3" onclick="play(this)" />
+    </map>
+    <script>
+        function play(drum) {
+                var sound = drum.className;
+                var audio = new Audio(sound);
+                audio.play();
+        }
+    </script>
+</body>
+</html>
